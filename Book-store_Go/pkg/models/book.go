@@ -2,7 +2,6 @@ package models
 
 import (
 	"book_store/pkg/config"
-
 	"github.com/jinzhu/gorm"
 )
 
@@ -33,13 +32,13 @@ func GetAllBooks() []Book {
 	return Books
 }
 
-func GetBookById(Id int) (*Book, *gorm.DB) {
+func GetBookById(Id int64) (*Book, *gorm.DB) {
 	var getbook Book
 	db := db.Where("ID=?", Id).Find(&getbook)
 	return &getbook, db
 }
 
-func DeleteBook(Id int) Book {
+func DeleteBook(Id int64) Book {
 	var book Book
 	db.Where("ID=?", Id).Find(book)
 	return book
