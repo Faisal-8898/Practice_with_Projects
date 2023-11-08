@@ -5,10 +5,9 @@ import (
 	"book_store/pkg/utils"
 	"encoding/json"
 	"fmt"
+	"github.com/gorilla/mux"
 	"net/http"
 	"strconv"
-
-	"github.com/gorilla/mux"
 )
 
 var NewBook models.Book
@@ -47,7 +46,7 @@ func CreateBook(w http.ResponseWriter, r *http.Request) {
 func DeleteBook(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	bookId := vars["bookId"]
-	Id, err := strconv.ParseInt(bookId, 0, 64)
+	Id, err := strconv.ParseInt(bookId, 0, 0)
 	if err != nil {
 		fmt.Println("Error While parsing in delete function")
 	}
