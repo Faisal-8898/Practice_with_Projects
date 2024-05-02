@@ -1,0 +1,39 @@
+{
+  "name": "app-installer-moja",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "config": {
+    "forge": {
+      "makers": [
+        {
+          "name": "@electron-forge/maker-dmg",
+          "config": {
+            "name": "your_app_name",
+            "overwrite": true,
+            "dmg": {
+              "contents": [
+                {
+                  "x": 110,
+                  "y": 150
+                },
+                {
+                  "x": 240,
+                  "y": 150,
+                  "type": "link",
+                  "path": "/Applications"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    }
+  },
+  "keywords": [],
+  "description": ""
+}
