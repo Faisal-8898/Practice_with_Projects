@@ -1,0 +1,32 @@
+services:
+  postgres_authentication_withMail:
+    container_name: postgres-sql-bsn
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - "5442:5432"  # make sure you don't have another container running on 5432
+
+    environment:
+      - POSTGRES_DB=book-social-network
+      - POSTGRES_USER=username
+      - POSTGRES_PASSWORD=password
+      - PGDATA=/var/lib/postgresql/data
+    networks:
+      - security-demo
+    volumes:
+      - ./data/postgres_authentication_withMail:/var/lib/postgresql/data
+
+  mail-dev:
+    container_name: mail-dev-bsn
+    image: maildev/maildev
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+
+networks:
+  security-demo:
+    driver: bridge
+
+volumes:
+  postgresql:
+    driver: local
